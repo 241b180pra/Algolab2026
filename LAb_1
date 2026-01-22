@@ -1,1 +1,178 @@
+This file contains a series of programming exercises designed for practice and understanding of recursion, time complexity, and array/list manipulation task. Your task is to: 1. Write in the form of comment what each function does. 2. Calculate the time complexity of each function. A Sample example is given in Exercie 1
 
+# Exercise 1
+def func1(a, b):
+  result = 0
+  for i in range(0, b):
+    result += a
+  return result
+# Sample function call: func1(5, 3)
+x=print(func1(4,3))
+#the function performs multiplication using repeated addition
+12
+# Exercise 2
+def func2(a, b):
+  result = 1
+  while b > 0:
+    result = result * a
+    b = b - 1
+  return result
+# Sample function call: func2(2, 4)
+Y=print(func2(4,3))
+64
+# Exercise 3
+def func3(num):
+   result = 0
+   while num > 0:
+    result = result + num % 10
+    num //= 10
+    return result
+# Sample function call: func3(1234)
+z=print(func3(45))
+5
+# Exercise 4
+def func4(a, b):
+    b.sort() # Time complexity for this function is O(Nlog N) where N = len(b)
+    intersect = 0
+    for x in a:
+        if binary_search(b, x) >= 0:
+            intersect = intersect + 1
+    return intersect
+
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+# Sample function call: func4([1, 2, 3, 4], [2, 4, 6, 8])
+
+w = print(func4([1,2,3,4],[2,4,6,8]))
+2
+# Exercise 5
+def func5(n):
+    guess = 1
+    while guess * guess <= n:
+        if guess * guess == n:
+            return guess
+        guess = guess + 1
+    return None
+# Sample function call: func5(16)
+
+p = print(func5(1))
+1
+# Exercise 6
+def func8(A):
+    func8_helper(A, 0, len(A) -1)
+
+def func8_helper(A, i, j):
+    #Input: An array A and two indices i and j.
+    n = j - 1 + 1
+    if n ==2:
+        if A[i] > A[j]:
+            # Swap A[i] and A[j]
+            A[i], A[j] = A[j], A[i]
+        elif n > 2:
+            m = n // 3
+            func8_helper(A, i, j - m)
+            func8_helper(A, i + m, j)
+            func8_helper(A, i, j - m)
+        return A
+#Sample function call: func8([3,1,2,7,8,6])
+
+t = print(func8([3,1,2,7,8,6]))
+None
+# Exercise 7
+def func12(arr, k):
+    arr_len = len(arr)
+    k = k % arr_len
+    # Initialize a new array of the same length as 'arr'
+    custom_arr = [0] * arr_len
+
+    for i in range(arr_len):
+        mystery_index = (i + k) % arr_len
+        custom_arr[mystery_index] = arr[i]
+    return custom_arr
+#Sample function call: func12([1, 2, 3, 4, 5], 2)
+
+m = print(func12([1, 2, 3, 4, 5], 2))
+[4, 5, 1, 2, 3]
+1.2 Arrays
+Programs on 1-d arrays like - sum of elements of array, searching an element inarray, finding minimum and maximum element in array, count the number ofeven and odd numbers in array. For all such programs, also find the timeComplexity, compare if there are multiple methods
+
+# write a function named as sum_arr to find sum of elements in given array
+def sum_arr(arr):
+    total = 0
+    for i in arr:
+        total += i
+    return total
+#call the function
+#arr = [12, 3, 4, 15,45,78,450]
+#print(sum_arr)
+
+arr = [12,3,4,15,45,78,450]
+print(sum_arr(arr))
+607
+#write a function named as max_min to find minimum (or maximum) element in an array
+def max_min(arr):
+    max = arr[0]
+    min = arr[0]
+    for i in arr:
+        if i > max:
+          max = i
+        elif i < min:
+          min = i
+    return max,min
+# call sum_arr to find sum of elements in given array for arr = [12, 1234, 45, 67, 1]
+arr = [12,1234,45,67,1]
+print(sum_arr(arr))
+1359
+# write a function named as Counting_EvenOdd to count number of even and odd elements in an array
+def Counting_EvenOdd(arr):
+  even = 0
+  odd = 0
+  for i in arr:
+    if (i%2==0):
+      even += 1
+    else:
+      odd += 1
+  return even,odd
+# call above function for arr = [2, 3, 4, 5, 6,7,8,9,10,11,12,13]
+arr = [2, 3, 4, 5, 6,7,8,9,10,11,12,13]
+print(Counting_EvenOdd(arr))
+(6, 6)
+# write a function named as linear_Search to perform a linear search in 1D-array
+def linear_Search(arr,a):
+    arr_len = len(arr)
+    for i in range(arr_len):
+        if (i==a):
+          return i
+        return -1
+# call the function liner_Search for array = [1, 3, 5, 7, 9]
+arr = [1,3,5,7,9]
+print(linear_Search(arr,7))
+-1
+# write a function named as Binary_Search to perform binary search in 1D-array
+def Binary_Search(arr,key):
+  arr_len = len(arr)
+  start = 0
+  end = arr_len - 1
+
+  while start <= end:
+        mid = start + (end - start) // 2
+        if arr[mid] == key:
+          return mid
+        elif arr[mid] < key:
+         start = mid + 1
+        else:
+         end = mid - 1
+  return -1
+# call the function Binary_Search for array arr = [1, 3, 5, 7, 9,15,16,14,45]
+arr = [1, 3, 5, 7, 9,15,16,14,45]
+print(Binary_Search(arr,16))
+6
